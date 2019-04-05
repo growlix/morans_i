@@ -1,4 +1,4 @@
-function[I pVals I_shuff] = mL_moransI_withShuffle...
+function[I pVal I_shuff] = mL_moransI_withShuffle...
     (arrayValues,weightMat,nReps)
 % [arrayValues] is an m x n topographical matrix of some feature as it varies
 % across a space, [weightMat] is a m*n x m*n marix of weights for each pairwise
@@ -43,6 +43,8 @@ else
     end
 end
 
-pVals = sum(I_shuff>I)/nReps ;
-pVals(pVals > .5) = abs(pVals(pVals > .5) - 1) ;
-pVals = pVals .*2 ;
+pVal = sum(rShuff>r)/nReps ;
+if pVal > .5
+    pVal = abs(pVal-1) ;
+end
+pVal = pVal .*2 ;
